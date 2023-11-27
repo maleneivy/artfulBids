@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/maleneivy/artfulBids/issues"
   },
-  "homepage": "https://github.com/maleneivy/artfulBids#readme"
+  "homepage": "https://github.com/maleneivy/artfulBids#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
 }
