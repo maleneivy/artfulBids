@@ -1,0 +1,23 @@
+{
+  "name": "artfulbids",
+  "version": "0.0.1",
+  "description": "An auction website",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maleneivy/artfulBids.git"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "Malene Olsen <maleneolsen_@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maleneivy/artfulBids/issues"
+  },
+  "homepage": "https://github.com/maleneivy/artfulBids#readme"
+}
