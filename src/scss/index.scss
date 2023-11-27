@@ -1,2 +1,23 @@
 @import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.scrolling-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.overflow-card {
+  display: inline-block;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.card-body {
+  max-width: 100%;
+}
