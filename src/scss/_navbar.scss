@@ -1,0 +1,21 @@
+.navbar {
+  background-color: $primary;
+  color: $secondary;
+}
+
+.navbar-brand {
+  color: $secondary !important;
+}
+
+.navbar button {
+  background-color: $secondary;
+}
+
+.navbar-toggler {
+  color: #ff9688 !important;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: #ff9688 !important;
+}
