@@ -26,3 +26,30 @@ body {
 .form-control {
   background-color: $tertiary;
 }
+
+.btn {
+  background-color: $red-100;
+  color: $primary;
+  border: solid 1px $primary;
+}
+
+.btn:hover {
+  background-color: $secondary;
+  border-color: $primary;
+}
+
+.btn:active {
+  background-color: $light;
+  border-color: $secondary;
+}
+
+.btn-log-in,
+.btn-register {
+  justify-content: end;
+  float: inline-end;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: $secondary;
+}

@@ -63,7 +63,7 @@
     </header>
 
     <main class="mx-md-5 mx-3">
-      <div class="container text-center mt-5" style="width: 70%">
+      <div class="container text-center mt-5" style="max-width: 700px">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
@@ -102,7 +102,7 @@
             aria-labelledby="login-tab"
             tabindex="0"
           >
-            <!-- Here are the log in form -->
+            <!-- Here is the log in form -->
             <form action="" class="text-start justify-center">
               <div class="mb-4 mt-4">
                 <label for="logInEmail" class="form-label">Email</label>
@@ -115,16 +115,17 @@
                   placeholder="Enter a valid @stud.noroff.no email"
                 />
               </div>
-              <label for="inputPassword5" class="form-label">Password</label>
-              <input
-                type="password"
-                id="inputPassword5"
-                class="form-control"
-                aria-describedby="passwordHelpBlock"
-              />
-              <div id="passwordHelpBlock" class="form-text">
-                Your password must be ....
+              <div class="mb-4 mt-4">
+                <label for="inputPassword5" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="inputPassword5"
+                  class="form-control"
+                  aria-describedby="passwordHelpBlock"
+                />
               </div>
+              <button type="submit" class="btn btn-log-in mt-3">Log in</button>
+              <div class="message"></div>
             </form>
             <!-- End of log in form -->
           </div>
@@ -134,7 +135,49 @@
             role="tabpanel"
             aria-labelledby="register-tab"
             tabindex="0"
-          ></div>
+          >
+            <!-- Here is the register form -->
+            <form action="" class="text-start justify-center">
+              <div class="mb-4 mt-4">
+                <label for="registerName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerName"
+                  required
+                  pattern="^[a-zA-Z0-9_]*$"
+                  title="The name must not contain punctuation symbols apart from underscore (_)"
+                  placeholder="Only letters a-z and/or underscore(_)"
+                />
+              </div>
+              <div class="mb-4 mt-4">
+                <label for="registerEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="registerEmail"
+                  required
+                  pattern="^[a-zA-Z0-9._%+\-]+@(stud\.noroff\.no)$"
+                  placeholder="Email must be a @stud.noroff.no email"
+                />
+              </div>
+              <div class="mb-4 mt-4">
+                <label for="createPassword" class="form-label">Password</label>
+                <input
+                  type="password"
+                  id="createPassword"
+                  class="form-control"
+                  aria-describedby="passwordHelpBlock"
+                />
+                <div id="passwordHelpBlock" class="form-text">
+                  Your password must be at least 8 characters.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-register">Register</button>
+              <div class="message"></div>
+              <!-- End of register form -->
+            </form>
+          </div>
         </div>
       </div>
     </main>
