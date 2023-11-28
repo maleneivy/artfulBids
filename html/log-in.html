@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/index.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/a1cf958ea2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Home Page for the auction site ArtfulBids</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-xs bg-body-primary">
+        <div class="container-fluid px-md-5 px-3">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">Artful Bids</a>
+          <form class="d-none d-md-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <a href="">
+            <i class="fa-solid fa-user" style="color: #dcf5fa"></i
+          ></a>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Contact</a>
+              <form class="d-flex d-md-none" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-md-5 mx-3">
+      <div class="container text-center mt-5" style="width: 70%">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="login-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#login-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="login-tab-pane"
+              aria-selected="true"
+            >
+              Log In
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="register-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#register-tab-pane"
+              type="button"
+              role="tab"
+              aria-controls="register-tab-pane"
+              aria-selected="false"
+            >
+              Register
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="login-tab-pane"
+            role="tabpanel"
+            aria-labelledby="login-tab"
+            tabindex="0"
+          >
+            <!-- Here are the log in form -->
+            <form action="" class="text-start justify-center">
+              <div class="mb-4 mt-4">
+                <label for="logInEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="logInEmail"
+                  required
+                  pattern="^[a-zA-Z0-9._%+\-]+@(stud\.noroff\.no)$"
+                  placeholder="Enter a valid @stud.noroff.no email"
+                />
+              </div>
+              <label for="inputPassword5" class="form-label">Password</label>
+              <input
+                type="password"
+                id="inputPassword5"
+                class="form-control"
+                aria-describedby="passwordHelpBlock"
+              />
+              <div id="passwordHelpBlock" class="form-text">
+                Your password must be ....
+              </div>
+            </form>
+            <!-- End of log in form -->
+          </div>
+          <div
+            class="tab-pane fade"
+            id="register-tab-pane"
+            role="tabpanel"
+            aria-labelledby="register-tab"
+            tabindex="0"
+          ></div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
