@@ -116,10 +116,10 @@
                 />
               </div>
               <div class="mb-4 mt-4">
-                <label for="inputPassword5" class="form-label">Password</label>
+                <label for="inputPassword" class="form-label">Password</label>
                 <input
                   type="password"
-                  id="inputPassword5"
+                  id="inputPassword"
                   class="form-control"
                   aria-describedby="passwordHelpBlock"
                 />
@@ -137,8 +137,18 @@
             tabindex="0"
           >
             <!-- Here is the register form -->
-            <form action="" class="text-start justify-center">
+            <form
+              action=""
+              class="text-start justify-center"
+              id="register-form"
+            >
               <div class="mb-4 mt-4">
+                <div class="text-center my-3 credits-register-info">
+                  <p class="py-3">
+                    First time users will receive 1000 credits on their profile
+                    to use for bidding on listings
+                  </p>
+                </div>
                 <label for="registerName" class="form-label">Name</label>
                 <input
                   type="text"
@@ -149,6 +159,7 @@
                   title="The name must not contain punctuation symbols apart from underscore (_)"
                   placeholder="Only letters a-z and/or underscore(_)"
                 />
+                <div class="message"></div>
               </div>
               <div class="mb-4 mt-4">
                 <label for="registerEmail" class="form-label">Email</label>
@@ -160,6 +171,7 @@
                   pattern="^[a-zA-Z0-9._%+\-]+@(stud\.noroff\.no)$"
                   placeholder="Email must be a @stud.noroff.no email"
                 />
+                <div class="message"></div>
               </div>
               <div class="mb-4 mt-4">
                 <label for="createPassword" class="form-label">Password</label>
@@ -168,10 +180,9 @@
                   id="createPassword"
                   class="form-control"
                   aria-describedby="passwordHelpBlock"
+                  placeholder="Password must be at least 8 characters"
                 />
-                <div id="passwordHelpBlock" class="form-text">
-                  Your password must be at least 8 characters.
-                </div>
+                <div class="message"></div>
               </div>
               <button type="submit" class="btn btn-register">Register</button>
               <div class="message"></div>
@@ -192,5 +203,6 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../src/js/api/auth/index.js"></script>
   </body>
 </html>

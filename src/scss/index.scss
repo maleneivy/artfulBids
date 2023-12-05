@@ -53,3 +53,13 @@ body {
 .nav-tabs .nav-item.show .nav-link {
   background-color: $secondary;
 }
+
+.credits-register-info {
+  background-color: $red-100;
+  border-radius: $border-radius;
+}
+
+.error-message {
+  background-color: $warning;
+  border-radius: $border-radius;
+}
