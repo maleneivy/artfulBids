@@ -20,7 +20,12 @@ export async function registerUser(url, userData) {
 
     if (jsonErrors) {
       jsonErrors.forEach((errorMessage) => {
-        displayMessage("error-message", errorMessage.message, ".message");
+        displayMessage(
+          "error-message",
+          errorMessage.message,
+          ".message-register",
+        );
+        console.log(errorMessage.message);
       });
     }
   } catch (error) {
