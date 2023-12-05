@@ -1,2 +1,2 @@
 export * from "./register.js";
-export * from "./login.js";
+export * from "./logIn.js";
