@@ -1,0 +1,29 @@
+import { API_BASE_URL } from "../api/baseUrl.js";
+import { getAllListingsUrl } from "../api/listings/listingsUrl.js";
+import { token } from "../utils/storage.mjs";
+
+const listingsUrl = `${API_BASE_URL}${getAllListingsUrl}`;
+
+export async function fetchListings(tag) {
+  try {
+    let url = listingsUrl;
+
+    // Filter by tag, if tag is given.
+    if (tag !== null) {
+      url += `?_tag=${tag}`;
+    }
+
+    const fetchOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await fetch(url, fetchOptions);
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
