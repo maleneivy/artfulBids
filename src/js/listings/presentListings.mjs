@@ -1,6 +1,6 @@
 import { formatDateTimeNorwegian } from "../utils/norwegianTimeFormat.mjs";
 
-export function presentListings(listings) {
+export async function presentListings(listings) {
   // get container and then clear it
   const listingsContainer = document.querySelector(".listings-container");
   listingsContainer.innerHTML = "";
@@ -8,9 +8,11 @@ export function presentListings(listings) {
   // Iterate over the posts and insert them to DOM.
   listings.forEach((listing) => {
     const title = listing.title;
-    const media = listing.media;
+    let media = listing.media;
+    media = media.toString();
     const tags = listing.tags;
     const endsAt = formatDateTimeNorwegian(listing.endsAt);
+    const bids = listing.bids;
 
     //ListingCard (Card will link href to the specific listing)
     const listingCard = document.createElement("a");
@@ -31,10 +33,27 @@ export function presentListings(listings) {
     // Image for the cardBody
     let listingImage = document.createElement("img");
     listingImage.classList.add("card-img-top");
-    if (media === "" || media === null) {
+
+    if (!media) {
       listingImage.src = "../../../images/default/default-post-image.jpg";
     } else {
-      listingImage.src = media;
+      // Split the media string into an array of image URLs
+      const mediaUrls = media.split(",");
+
+      // Select the first image from the array
+      const firstImageUrl = mediaUrls[0].trim();
+
+      // Set the src attribute for the listingImage
+      listingImage.src = firstImageUrl;
+
+      // Handle error for the first image
+      listingImage.onerror = function () {
+        console.log(`Error loading image: ${firstImageUrl}`);
+        // set the default image in case of error
+        listingImage.src = "../../../images/default/default-post-image.jpg";
+        // Remove the onerror handler to prevent the default error message
+        listingImage.onerror = null;
+      };
     }
 
     // Title for the Cardbody
@@ -57,11 +76,28 @@ export function presentListings(listings) {
     listingEndsAt.textContent = endsAt;
     listingEndsAt.style.whiteSpace = "pre-line";
 
+    // bids
+    const listingBid = document.createElement("p");
+    listingBid.classList.add("card-text", "p-2");
+    if (bids.length > 0) {
+      // Find the highest bid amount
+      const highestBidAmount = bids.reduce((maxBid, currentBid) => {
+        return currentBid.amount > (maxBid ? maxBid.amount : 0)
+          ? currentBid
+          : maxBid;
+      }, bids[0]);
+
+      listingBid.textContent = `Highest Bid: ${highestBidAmount.amount}`;
+    } else {
+      listingBid.textContent = "No Bids";
+    }
+
     // Append the elements to the cardBody
     cardBody.appendChild(listingImage);
     cardBody.appendChild(listingTitle);
     cardBody.appendChild(listingTags);
     cardBody.appendChild(listingEndsAt);
+    cardBody.appendChild(listingBid);
 
     //Append the cardBody to the listingCard
     listingCard.appendChild(cardBody);

@@ -4,14 +4,22 @@ import { token } from "../utils/storage.mjs";
 
 const listingsUrl = `${API_BASE_URL}${getAllListingsUrl}`;
 
-export async function fetchListings(tag) {
+export async function fetchListings(tag, bids) {
   try {
     let url = listingsUrl;
+    let queryParams = [];
 
     // Filter by tag, if tag is given.
     if (tag !== null) {
-      url += `?_tag=${tag}`;
+      queryParams.push(`_tag=${tag}`);
     }
+
+    // if there are any bids.
+    if (bids !== false) {
+      queryParams.push(`_bids=true`);
+    }
+
+    url += "?" + queryParams.join("&");
 
     const fetchOptions = {
       method: "GET",
