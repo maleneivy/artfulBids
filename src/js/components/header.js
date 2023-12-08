@@ -81,18 +81,18 @@ export function createHeader() {
   navbarCollapse.id = "navbarNavAltMarkup2";
 
   const navbarNav = document.createElement("div");
-  navbarNav.className = "navbar-nav";
+  navbarNav.className = "navbar-nav navbar-nav-header";
   const homeLink = document.createElement("a");
-  homeLink.className = "nav-link";
+  homeLink.className = "nav-link mt-2 mb-1";
   homeLink.setAttribute("aria-current", "page");
   homeLink.href = "/html/index.html";
   homeLink.textContent = "Home";
   const aboutLink = document.createElement("a");
-  aboutLink.className = "nav-link";
+  aboutLink.className = "nav-link my-1";
   aboutLink.href = "#";
   aboutLink.textContent = "About";
   const contactLink = document.createElement("a");
-  contactLink.className = "nav-link";
+  contactLink.className = "nav-link my-1";
   contactLink.href = "#";
   contactLink.textContent = "Contact";
   const searchFormSm = document.createElement("form");
