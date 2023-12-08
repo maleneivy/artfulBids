@@ -8,7 +8,7 @@
       src="https://kit.fontawesome.com/a1cf958ea2.js"
       crossorigin="anonymous"
     ></script>
-    <title>Home Page for the auction site ArtfulBids</title>
+    <title>Log in or register for the auction site ArtfulBids</title>
   </head>
   <body>
     <header>
@@ -37,26 +37,35 @@
               Search
             </button>
           </form>
-          <a href="">
-            <i class="fa-solid fa-user" style="color: #dcf5fa"></i
-          ></a>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">About</a>
-              <a class="nav-link" href="#">Contact</a>
-              <form class="d-flex d-md-none" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-            </div>
+          <div id="logged-out-header-icons">
+            <a href="../html/log-in-register.html">
+              <i class="fa-solid fa-user" style="color: #dcf5fa"></i
+            ></a>
+          </div>
+          <div id="logged-in-header-icons">
+            <i class="fa-solid fa-coins" style="color: #dcf5fa"></i>
+            <div id="credit-info"></div>
+            <a href="">
+              <i class="fa-solid fa-user" style="color: #dcf5fa"></i
+            ></a>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup2">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#">Contact</a>
+            <form class="d-flex d-md-none" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
           </div>
         </div>
       </nav>
@@ -201,6 +210,7 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../src/js/components/header.js"></script>
     <script type="module" src="../src/js/api/auth/index.js"></script>
   </body>
 </html>
