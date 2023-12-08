@@ -8,6 +8,13 @@ body {
   box-sizing: border-box;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 .scrolling-container {
   overflow-x: auto;
   white-space: nowrap;

@@ -6,6 +6,7 @@ import { credits } from "../utils/storage.mjs";
 
 export function createHeader() {
   const header = document.querySelector("header");
+  header.classList.add("sticky");
 
   const nav = document.createElement("nav");
   nav.className = "navbar navbar-expand-xs bg-body-primary";
