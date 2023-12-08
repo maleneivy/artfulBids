@@ -70,3 +70,39 @@ body {
   height: 300px;
   object-fit: cover;
 }
+
+#logged-out-header-icons {
+  a {
+    .fa-user {
+      color: $secondary;
+      font-size: 1.8rem;
+
+      &:hover {
+        color: lighten($secondary, 10%);
+      }
+    }
+  }
+}
+
+#logged-in-header-icons {
+  a {
+    .fa-user {
+      color: $secondary;
+      font-size: 1.8rem;
+
+      &:hover {
+        color: lighten($secondary, 10%);
+      }
+    }
+  }
+}
+#logged-in-header-icons {
+  .fa-coins {
+    color: $secondary;
+    font-size: 1.8rem;
+
+    &:hover {
+      color: lighten($secondary, 10%);
+    }
+  }
+}
