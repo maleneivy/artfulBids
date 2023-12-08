@@ -67,7 +67,7 @@ export function createHeader() {
   creditsDisplay.classList.add("ms-1", "me-3", "mb-0");
   creditsDisplay.style.lineHeight = "1.5";
   const userLinkLoggedIn = document.createElement("a");
-  userLinkLoggedIn.href = "";
+  userLinkLoggedIn.href = "/html/my-profile.html";
   const userIconLoggedIn = document.createElement("i");
   userIconLoggedIn.className = "fa-solid fa-user";
   loggedInHeaderIcons.appendChild(creditInfo);
