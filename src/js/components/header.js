@@ -1,5 +1,6 @@
 import { isLoggedIn } from "../api/auth/isLoggedIn.js";
 import { getActiveLink } from "../utils/activeLink.js";
+import { credits } from "../utils/storage.mjs";
 
 // Header I can call on every page
 
@@ -55,16 +56,22 @@ export function createHeader() {
 
   const loggedInHeaderIcons = document.createElement("div");
   loggedInHeaderIcons.id = "logged-in-header-icons";
+  const creditInfo = document.createElement("a");
+  creditInfo.id = "credit-info";
+  creditInfo.style.display = "flex";
   const coinsIcon = document.createElement("i");
   coinsIcon.className = "fa-solid fa-coins";
-  const creditInfo = document.createElement("div");
-  creditInfo.id = "credit-info";
+  const creditsDisplay = document.createElement("h5");
+  creditsDisplay.textContent = credits;
+  creditsDisplay.classList.add("ms-1", "me-3", "mb-0");
+  creditsDisplay.style.lineHeight = "1.5";
   const userLinkLoggedIn = document.createElement("a");
   userLinkLoggedIn.href = "";
   const userIconLoggedIn = document.createElement("i");
   userIconLoggedIn.className = "fa-solid fa-user";
-  loggedInHeaderIcons.appendChild(coinsIcon);
   loggedInHeaderIcons.appendChild(creditInfo);
+  creditInfo.appendChild(coinsIcon);
+  creditInfo.appendChild(creditsDisplay);
   userLinkLoggedIn.appendChild(userIconLoggedIn);
   loggedInHeaderIcons.appendChild(userLinkLoggedIn);
 

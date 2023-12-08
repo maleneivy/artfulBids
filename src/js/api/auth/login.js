@@ -18,10 +18,14 @@ export async function logInUser(url, userData) {
       const userEmail = userData.email;
       const accessToken = json.accessToken;
       const userName = json.name;
+      const credits = json.credits;
+
+      console.log(credits);
 
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("email", userEmail);
       localStorage.setItem("userName", userName);
+      localStorage.setItem("credits", credits);
 
       window.location.href = "/html/index.html";
     } else {
