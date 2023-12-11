@@ -1,7 +1,9 @@
 import { createHeader } from "../components/header.js";
+import logOutButton from "../components/logOutButton.mjs";
 import { userName, email, credits } from "../utils/storage.mjs";
 
 createHeader();
+logOutButton();
 
 function createProfile() {
   const userInfoContainer = document.querySelector(".user-info-container");
