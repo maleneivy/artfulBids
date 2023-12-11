@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.typekit.net/jqs3osj.css" />
+    <script
+      src="https://kit.fontawesome.com/a1cf958ea2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>
+      Create a new listing for selling on the Auction site Artful Bids
+    </title>
+  </head>
+  <header></header>
+  <main>
+    <div class="sub-header">
+      <h1 class="sub-header-h1">Create New Listing</h1>
+    </div>
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <div class="col mt-3">
+          <form id="new-listing-form">
+            <div class="mb-3">
+              <label for="lisitngTitle" class="form-label"
+                >New Listing (required)</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="listingTitleInput"
+                name="title"
+                placeholder="Title"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label"
+                >Description (required)</label
+              >
+              <textarea
+                class="form-control"
+                id="descriptionInput"
+                name="body"
+                rows="7"
+                placeholder="Maximum 280 characters"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="listingDeadline" class="form-label"
+                >Deadline for final bid</label
+              >
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="listingDeadlineInput"
+                name="deadline"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <div id="ImageInputsContainer">
+                <div class="image-input-row">
+                  <label for="listingImage1" class="form-label"
+                    >URL Image(s)</label
+                  >
+                  <div class="d-flex">
+                    <input
+                      type="url"
+                      id="listingImage1"
+                      class="image-input form-control"
+                    /><i
+                      class="fa-regular fa-trash-can"
+                      id="delete-image-input"
+                      style="color: #272c35"
+                    ></i>
+                  </div>
+                </div>
+                <div class="reached-limit-message"></div>
+              </div>
+              <div class="empty-image-message"></div>
+              <button type="button" id="addImageInput" class="mt-2">
+                Add Image
+              </button>
+            </div>
+            <div class="mb-3">
+              <label for="listingTagsInput" class="form-label">Category</label>
+              <input
+                type="text"
+                class="form-control"
+                id="listingTagsInput"
+                name="tags"
+                placeholder="Example: painting, mixed-media"
+              />
+            </div>
+            <div class="col-12">
+              <button
+                type="submit"
+                id="save-listing-button"
+                class="btn btn-primary"
+              >
+                Save
+              </button>
+              <div id="go-to-listing-by-id"></div>
+            </div>
+            <div id="message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/src/js/pages/createListing.mjs"></script>
+</html>
