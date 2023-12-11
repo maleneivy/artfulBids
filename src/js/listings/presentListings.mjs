@@ -13,10 +13,11 @@ export async function presentListings(listings) {
     const tags = listing.tags;
     const endsAt = formatDateTimeNorwegian(listing.endsAt);
     const bids = listing.bids;
+    const id = listing.id;
 
     //ListingCard (Card will link href to the specific listing)
     const listingCard = document.createElement("a");
-    listingCard.href = `#`;
+    listingCard.href = `/html/specific-listing.html?id=${id}`;
     listingCard.classList.add(
       "card",
       "col-sm-12",
