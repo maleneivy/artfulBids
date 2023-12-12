@@ -5,7 +5,7 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
-  max-width: 1920px;
+  max-width: 1700px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -121,4 +121,31 @@ body {
   width: 200px;
   border: solid 1px #000;
   border-radius: 50%;
+}
+
+// carousel
+#carouselExampleCaptions {
+  max-width: 900px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  color: $primary;
+}
+
+.carousel-indicators button[data-bs-target] {
+  background-color: $primary;
+  width: 200px;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: $primary;
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.row-specific {
+  margin-top: 150px;
 }
