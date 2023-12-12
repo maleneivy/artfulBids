@@ -89,11 +89,11 @@ export function createHeader() {
   homeLink.textContent = "Home";
   const aboutLink = document.createElement("a");
   aboutLink.className = "nav-link my-1";
-  aboutLink.href = "#";
+  aboutLink.href = "/html/about.html";
   aboutLink.textContent = "About";
   const contactLink = document.createElement("a");
   contactLink.className = "nav-link my-1";
-  contactLink.href = "#";
+  contactLink.href = "/html/contact.html";
   contactLink.textContent = "Contact";
   const searchFormSm = document.createElement("form");
   searchFormSm.className = "d-flex d-md-none";
