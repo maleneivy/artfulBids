@@ -9,7 +9,7 @@ logOutButton();
 
 async function getUserData() {
   try {
-    const getUserProfileUrl = `${API_BASE_URL}/auction/profiles/${userName}?_listings=true&_bids=true`;
+    const getUserProfileUrl = `${API_BASE_URL}/auction/profiles/${userName}?_listings=true`;
 
     const getData = {
       method: "GET",
@@ -21,13 +21,9 @@ async function getUserData() {
 
     const response = await fetch(getUserProfileUrl, getData);
     const json = await response.json();
-    console.log(response);
-    console.log(json);
 
     const userCountListings = json._count.listings;
     const userListings = json.listings;
-
-    console.log(userListings);
     createProfile(userCountListings, userListings);
   } catch (error) {
     console.log(error);
