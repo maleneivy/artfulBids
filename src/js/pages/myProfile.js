@@ -2,7 +2,7 @@ import { API_BASE_URL } from "../api/baseUrl.js";
 import { createHeader } from "../components/header.js";
 import logOutButton from "../components/logOutButton.mjs";
 import { formatDateTimeNorwegian } from "../utils/norwegianTimeFormat.mjs";
-import { userName, email, credits, token } from "../utils/storage.mjs";
+import { userName, email, credits, token, avatar } from "../utils/storage.mjs";
 
 createHeader();
 logOutButton();
@@ -22,16 +22,25 @@ async function getUserData() {
     const response = await fetch(getUserProfileUrl, getData);
     const json = await response.json();
 
+    let jsonAvatar = json.avatar;
+
     const userCountListings = json._count.listings;
     const userListings = json.listings;
-    createProfile(userCountListings, userListings);
+    createProfile(userCountListings, userListings, jsonAvatar);
   } catch (error) {
     console.log(error);
   }
 }
 getUserData();
 
-function createProfile(userCountListings, userListings) {
+function createProfile(userCountListings, userListings, jsonAvatar) {
+  const avatarImage = document.querySelector("#avatarImage");
+  jsonAvatar = avatar;
+  avatarImage.src = jsonAvatar;
+  if (avatarImage === null) {
+    avatarImage.src = "/images/default/default-post-image.jpg";
+  }
+
   const userInfoContainer = document.querySelector(".user-info-container");
 
   const greetingMessage = document.createElement("h2");
@@ -55,8 +64,6 @@ function createProfile(userCountListings, userListings) {
   userInfoContainer.appendChild(presentTotalListings);
 
   userListings.forEach((listing) => {
-    console.log(listing);
-
     const listingsContainer = document.querySelector(".listings-container");
 
     const title = listing.title;

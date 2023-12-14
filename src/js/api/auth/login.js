@@ -19,6 +19,7 @@ export async function logInUser(url, userData) {
       const accessToken = json.accessToken;
       const userName = json.name;
       const credits = json.credits;
+      const avatar = json.avatar;
 
       console.log(credits);
 
@@ -26,6 +27,7 @@ export async function logInUser(url, userData) {
       localStorage.setItem("email", userEmail);
       localStorage.setItem("userName", userName);
       localStorage.setItem("credits", credits);
+      localStorage.setItem("avatar", avatar);
 
       window.location.href = "/html/index.html";
     } else {

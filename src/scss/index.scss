@@ -118,9 +118,11 @@ body {
 
 // img
 .avatar-profile {
-  width: 200px;
+  width: 150px;
+  height: 150px;
   border: solid 1px #000;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 // carousel
