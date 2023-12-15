@@ -2,10 +2,21 @@ import { isLoggedIn } from "../api/auth/isLoggedIn.js";
 import { API_BASE_URL } from "../api/baseUrl.js";
 import { createHeader } from "../components/header.js";
 import { token } from "../utils/storage.mjs";
+import { displayMessage } from "../utils/displayMessage.mjs";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const listingId = urlParams.get("id");
+
+// Check if user is logged in
+const bidButton = document.querySelector("#bidButton");
+const logInButton = document.querySelector("#logInButton");
+const hideBidInput = document.querySelector("#bidAmount");
+if (token === null) {
+  bidButton.style.display = "none";
+  logInButton.style.display = "block";
+  hideBidInput.style.display = "none";
+}
 
 createHeader();
 
@@ -85,7 +96,7 @@ async function presentListing(listing) {
 
   // Bidding History
   // If user is logged in
-  if (isLoggedIn) {
+  if (isLoggedIn()) {
     const bidStoryTable = document.querySelector("#bidding-table");
     const tbody = bidStoryTable.querySelector("tbody");
 
@@ -168,6 +179,12 @@ async function presentListing(listing) {
       // Append the "Load More" button to the container
       bidStoryTable.parentNode.appendChild(loadMoreButton);
     }
+  } else {
+    displayMessage(
+      "error-message",
+      `Only registered users can see bid story on listings`,
+      ".unregistered-message",
+    );
   }
 }
 

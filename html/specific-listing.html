@@ -120,12 +120,24 @@
           class="form-control"
           placeholder="Place your bid here"
         />
-        <button class="btn btn-primary" onclick="placeBid()">Bid</button>
+        <button class="btn btn-primary" id="bidButton" onclick="placeBid()">
+          Bid
+        </button>
+        <button
+          class="btn btn-primary"
+          style="display: none"
+          id="logInButton"
+          onclick="location.href=`/html/log-in-register.html`"
+        >
+          Log in to place a bid
+        </button>
       </div>
       <div class="bidding-message"></div>
+
       <div class="container mt-5" id="bidding-history-container">
         <table class="table" id="bidding-table">
           <h5>Bid history</h5>
+          <div class="unregistered-message"></div>
           <tbody></tbody>
         </table>
       </div>
