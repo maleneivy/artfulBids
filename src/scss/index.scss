@@ -137,7 +137,7 @@ body {
 
 // carousel
 #carouselExampleCaptions {
-  max-width: 900px;
+  max-width: 600px;
   text-align: center;
   margin: 0 auto;
 }
@@ -159,7 +159,8 @@ body {
 }
 
 .row-specific {
-  margin-top: 150px;
+  margin: 130px auto 30px auto;
+  max-width: 600px;
 }
 
 // bid
@@ -171,4 +172,8 @@ body {
 
 #bidAmount {
   margin-bottom: 10px;
+}
+
+.bidding-history-container {
+  max-width: 600px;
 }

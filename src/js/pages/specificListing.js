@@ -1,3 +1,4 @@
+import { isLoggedIn } from "../api/auth/isLoggedIn.js";
 import { API_BASE_URL } from "../api/baseUrl.js";
 import { createHeader } from "../components/header.js";
 import { token } from "../utils/storage.mjs";
@@ -18,7 +19,8 @@ async function presentListing(listing) {
   const bids = listing.bids;
   const endsAt = new Date(listing.endsAt).getTime();
   //   const seller = listing.seller;
-  //   let countBids = listing._count.bids;
+
+  console.log(bids);
 
   const infoContainer = document.querySelector(".specific-listing-container");
   infoContainer.innerHTML = "";
@@ -80,6 +82,93 @@ async function presentListing(listing) {
 
   const presentDescription = document.querySelector("#description-text");
   presentDescription.textContent = description;
+
+  // Bidding History
+  // If user is logged in
+  if (isLoggedIn) {
+    const bidStoryTable = document.querySelector("#bidding-table");
+    const tbody = bidStoryTable.querySelector("tbody");
+
+    // Sort bids by amount in descending order
+    bids.sort((a, b) => b.amount - a.amount);
+
+    // Create the table header
+    const thead = document.createElement("thead");
+    const headerRow = document.createElement("tr");
+
+    const amountHeader = document.createElement("th");
+    amountHeader.textContent = "Amount";
+    headerRow.appendChild(amountHeader);
+
+    const bidderNameHeader = document.createElement("th");
+    bidderNameHeader.textContent = "Bidder Name";
+    headerRow.appendChild(bidderNameHeader);
+
+    thead.appendChild(headerRow);
+    bidStoryTable.appendChild(thead);
+
+    const numToShow = 5; // Number of rows to show initially
+    let currentShown = 0;
+
+    bids.slice(0, numToShow).forEach((bid) => {
+      let bidderName = bid.bidderName;
+      let bidAmount = bid.amount;
+
+      // Create a new row for each bid
+      const row = document.createElement("tr");
+
+      // Add columns to the row
+      const amountCell = document.createElement("td");
+      amountCell.textContent = bidAmount;
+      row.appendChild(amountCell);
+
+      const bidderNameCell = document.createElement("td");
+      bidderNameCell.textContent = bidderName;
+      row.appendChild(bidderNameCell);
+
+      // Append the row to the table body
+      tbody.appendChild(row);
+      currentShown++;
+    });
+
+    if (bids.length > numToShow) {
+      // Create "Load More" button
+      const loadMoreButton = document.createElement("button");
+      loadMoreButton.classList.add("btn", "btn-primary");
+      loadMoreButton.style.float = "right";
+      loadMoreButton.textContent = "Load More";
+      loadMoreButton.addEventListener("click", () => {
+        bids.slice(currentShown, currentShown + numToShow).forEach((bid) => {
+          let bidderName = bid.bidderName;
+          let bidAmount = bid.amount;
+
+          // Create a new row for each bid
+          const row = document.createElement("tr");
+
+          // Add columns to the row
+          const amountCell = document.createElement("td");
+          amountCell.textContent = bidAmount;
+          row.appendChild(amountCell);
+
+          const bidderNameCell = document.createElement("td");
+          bidderNameCell.textContent = bidderName;
+          row.appendChild(bidderNameCell);
+
+          // Append the row to the table body
+          tbody.appendChild(row);
+          currentShown++;
+        });
+
+        if (currentShown >= bids.length) {
+          // Hide the "Load More" button when all bids are shown
+          loadMoreButton.style.display = "none";
+        }
+      });
+
+      // Append the "Load More" button to the container
+      bidStoryTable.parentNode.appendChild(loadMoreButton);
+    }
+  }
 }
 
 export async function getSpecificListing() {
