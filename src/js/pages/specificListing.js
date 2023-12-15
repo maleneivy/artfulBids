@@ -21,6 +21,7 @@ async function presentListing(listing) {
   //   let countBids = listing._count.bids;
 
   const infoContainer = document.querySelector(".specific-listing-container");
+  infoContainer.innerHTML = "";
 
   const presentTitle = document.createElement("h5");
   presentTitle.textContent = title;
@@ -32,6 +33,7 @@ async function presentListing(listing) {
   }
 
   const presentHighestBid = document.createElement("p");
+  presentHighestBid.classList.add("highest-bid-amount");
   if (bids.length > 0) {
     // Find the highest bid amount
     const highestBidAmount = bids.reduce((maxBid, currentBid) => {
@@ -80,7 +82,7 @@ async function presentListing(listing) {
   presentDescription.textContent = description;
 }
 
-async function getSpecificListing() {
+export async function getSpecificListing() {
   try {
     const specificListingURL = `${API_BASE_URL}/auction/listings/${listingId}?_seller=true&_bids=true`;
 
@@ -94,9 +96,8 @@ async function getSpecificListing() {
 
     const response = await fetch(specificListingURL, getData);
     const json = await response.json();
-    console.log(response);
+
     const listing = json;
-    console.log(listing);
 
     presentListing(listing);
   } catch (error) {

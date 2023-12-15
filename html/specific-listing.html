@@ -113,6 +113,16 @@
           </div>
         </div>
       </div>
+      <div class="bid-container d-flex">
+        <input
+          type="number"
+          id="bidAmount"
+          class="form-control"
+          placeholder="Place your bid here"
+        />
+        <button class="btn btn-primary" onclick="placeBid()">Bid</button>
+      </div>
+      <div class="bidding-message"></div>
       <div class="container mt-5" id="bidding-history-container"></div>
     </main>
     <script
@@ -126,5 +136,6 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="/src/js/pages/specificListing.js"></script>
+    <script type="module" src="/src/js/components/bidOnListing.js"></script>
   </body>
 </html>

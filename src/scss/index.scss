@@ -68,11 +68,21 @@ body {
   border-radius: $border-radius;
 }
 
+.error-message,
+.success-message {
+  border-radius: $border-radius;
+  padding: 0.375rem;
+  text-align: center;
+  max-width: fit-content;
+  margin: 1rem auto;
+}
+
 .error-message {
   background-color: $warning;
-  border-radius: $border-radius;
-  margin-top: 1rem;
-  padding: 0.375rem;
+}
+
+.success-message {
+  background-color: $green;
 }
 
 .card-img-top {
@@ -150,4 +160,15 @@ body {
 
 .row-specific {
   margin-top: 150px;
+}
+
+// bid
+.bid-container {
+  margin: 25px auto;
+  max-width: 200px;
+  flex-direction: column;
+}
+
+#bidAmount {
+  margin-bottom: 10px;
 }
