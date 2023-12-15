@@ -1,7 +1,7 @@
 import { isLoggedIn } from "../api/auth/isLoggedIn.js";
 import { API_BASE_URL } from "../api/baseUrl.js";
 import { createHeader } from "../components/header.js";
-import { token } from "../utils/storage.mjs";
+import { token, userName } from "../utils/storage.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
 
 const queryString = window.location.search;
@@ -29,7 +29,17 @@ async function presentListing(listing) {
   const tags = listing.tags;
   const bids = listing.bids;
   const endsAt = new Date(listing.endsAt).getTime();
-  //   const seller = listing.seller;
+
+  // h1 lisitng name
+  const presentH1Title = document.querySelector(".specific-listing-h1");
+  presentH1Title.textContent = title;
+
+  // Check if user is the creator of the listing
+  const seller = listing.seller.name;
+  if (seller === userName) {
+    bidButton.style.display = "none";
+    hideBidInput.style.display = "none";
+  }
 
   // Check if there are images in the media
   if (media && media.length > 0) {
@@ -130,9 +140,14 @@ async function presentListing(listing) {
   // Update time left every second
   intervalId = setInterval(updateTimeLeft, 1000); // Assign to intervalId here
 
+  // Present seller on listing
+  const presentSeller = document.createElement("p");
+  presentSeller.textContent = `Seller: ${seller}`;
+
   infoContainer.appendChild(presentTitle);
   infoContainer.appendChild(presentTags);
   infoContainer.appendChild(presentHighestBid);
+  infoContainer.appendChild(presentSeller);
   infoContainer.appendChild(timeLeftContainer);
 
   const presentDescription = document.querySelector("#description-text");
