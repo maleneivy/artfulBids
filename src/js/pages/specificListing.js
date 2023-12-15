@@ -25,13 +25,57 @@ async function presentListing(listing) {
   //   const created = listing.created;
   const title = listing.title;
   const description = listing.description;
-  //   const media = listing.media;
+  const media = listing.media;
   const tags = listing.tags;
   const bids = listing.bids;
   const endsAt = new Date(listing.endsAt).getTime();
   //   const seller = listing.seller;
 
-  console.log(bids);
+  // Check if there are images in the media
+  if (media && media.length > 0) {
+    const carouselIndicators = document.querySelector(".carousel-indicators");
+    const carouselInner = document.querySelector(".carousel-inner");
+
+    // Clear existing indicators and inner content
+    carouselIndicators.innerHTML = "";
+    carouselInner.innerHTML = "";
+
+    // Populate carousel indicators and inner content
+    media.forEach((imageUrl, index) => {
+      const indicatorButton = document.createElement("button");
+      indicatorButton.type = "button";
+      indicatorButton.dataset.bsTarget = "#carouselExampleCaptions";
+      indicatorButton.dataset.bsSlideTo = index;
+      indicatorButton.className = `img-thumbnail ${
+        index === 0 ? "active" : ""
+      }`;
+      indicatorButton.setAttribute("aria-current", index === 0);
+      indicatorButton.setAttribute("aria-label", `Slide ${index + 1}`);
+
+      const indicatorImage = document.createElement("img");
+      indicatorImage.src = imageUrl;
+      indicatorImage.className = "d-block w-100 thumb-image";
+      indicatorImage.alt = `Slide ${index + 1}`;
+
+      indicatorButton.appendChild(indicatorImage);
+      carouselIndicators.appendChild(indicatorButton);
+
+      const carouselItem = document.createElement("div");
+      carouselItem.className = `carousel-item ${index === 0 ? "active" : ""}`;
+
+      const carouselItemImage = document.createElement("img");
+      carouselItemImage.src = imageUrl;
+      carouselItemImage.className = "d-block w-50";
+      carouselItemImage.alt = `Slide ${index + 1}`;
+
+      if (!imageUrl || imageUrl === "") {
+        indicatorImage.src = "/images/default/default-post-image.jpg";
+      }
+
+      carouselItem.appendChild(carouselItemImage);
+      carouselInner.appendChild(carouselItem);
+    });
+  }
 
   const infoContainer = document.querySelector(".specific-listing-container");
   infoContainer.innerHTML = "";

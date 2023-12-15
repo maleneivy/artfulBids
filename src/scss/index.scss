@@ -151,6 +151,14 @@ body {
   width: 200px;
 }
 
+.carousel-indicators {
+  bottom: -40px;
+}
+
+.carousel-inner {
+  left: 25%;
+}
+
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   background-color: $primary;
@@ -161,6 +169,17 @@ body {
 .row-specific {
   margin: 130px auto 30px auto;
   max-width: 600px;
+}
+
+.carousel-item img {
+  width: 50%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.thumb-image {
+  height: 100px;
+  object-fit: contain;
 }
 
 // bid
