@@ -174,12 +174,30 @@ body {
 .carousel-item img {
   width: 50%;
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .thumb-image {
   height: 100px;
   object-fit: contain;
+}
+
+@media (max-width: 450px) {
+  .carousel-indicators {
+    bottom: -10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .carousel-indicators {
+    bottom: 45px;
+  }
+}
+
+@media (max-width: 280px) {
+  .carousel-indicators {
+    bottom: 65px;
+  }
 }
 
 // bid
