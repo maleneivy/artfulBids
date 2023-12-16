@@ -111,6 +111,96 @@
             <h5>Description</h5>
             <p id="description-text"></p>
           </div>
+          <button
+            class="btn btn-primary"
+            style="display: none"
+            id="editButton"
+            data-bs-toggle="modal"
+            data-bs-target="#editModal"
+          >
+            Edit Listing
+          </button>
+          <!--Edit Modal -->
+          <div
+            class="modal fade"
+            id="editModal"
+            tabindex="-1"
+            aria-labelledby="editModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">Edit Listing</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="edit-listing-form">
+                    <div class="mb-3">
+                      <label for="editTitleInput" class="form-label"
+                        >Title</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editTitleInput"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="editDescriptionInput" class="form-label"
+                        >Description</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="editDescriptionInput"
+                        rows="7"
+                      ></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <div id="editImageInputsContainer"></div>
+                      <div class="empty-image-message"></div>
+                      <button type="button" id="editAddImageInput" class="mt-2">
+                        Add Image
+                      </button>
+                    </div>
+                    <div class="mb-3">
+                      <label for="editTagsInput" class="form-label"
+                        >Category</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editTagsInput"
+                      />
+                    </div>
+                    <div class="modal-footer">
+                      <div class="edit-message"></div>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        id="closeModalButton"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="submit"
+                        id="save-listing-button"
+                        class="btn btn-primary"
+                      >
+                        Save changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="bid-container d-flex">
@@ -154,5 +244,6 @@
     ></script>
     <script type="module" src="/src/js/pages/specificListing.js"></script>
     <script type="module" src="/src/js/components/bidOnListing.js"></script>
+    <script type="module" src="/src/js/components/editListing.mjs"></script>
   </body>
 </html>

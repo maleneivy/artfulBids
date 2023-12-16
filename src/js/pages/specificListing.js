@@ -32,13 +32,18 @@ async function presentListing(listing) {
 
   // h1 lisitng name
   const presentH1Title = document.querySelector(".specific-listing-h1");
-  presentH1Title.textContent = title;
+  presentH1Title.textContent = title[0].toUpperCase() + title.slice(1);
 
   // Check if user is the creator of the listing
+  // Show/hide elements
   const seller = listing.seller.name;
   if (seller === userName) {
     bidButton.style.display = "none";
     hideBidInput.style.display = "none";
+
+    const editButton = document.querySelector("#editButton");
+    editButton.style.display = "block";
+    editButton.style.float = "right";
   }
 
   // Check if there are images in the media
@@ -159,23 +164,28 @@ async function presentListing(listing) {
     const bidStoryTable = document.querySelector("#bidding-table");
     const tbody = bidStoryTable.querySelector("tbody");
 
+    // Clear existing content inside tbody
+    tbody.innerHTML = "";
+
     // Sort bids by amount in descending order
     bids.sort((a, b) => b.amount - a.amount);
 
-    // Create the table header
-    const thead = document.createElement("thead");
-    const headerRow = document.createElement("tr");
+    // Create the table header if it doesn't exist
+    if (!bidStoryTable.querySelector("thead")) {
+      const thead = document.createElement("thead");
+      const headerRow = document.createElement("tr");
 
-    const amountHeader = document.createElement("th");
-    amountHeader.textContent = "Amount";
-    headerRow.appendChild(amountHeader);
+      const amountHeader = document.createElement("th");
+      amountHeader.textContent = "Amount";
+      headerRow.appendChild(amountHeader);
 
-    const bidderNameHeader = document.createElement("th");
-    bidderNameHeader.textContent = "Bidder Name";
-    headerRow.appendChild(bidderNameHeader);
+      const bidderNameHeader = document.createElement("th");
+      bidderNameHeader.textContent = "Bidder Name";
+      headerRow.appendChild(bidderNameHeader);
 
-    thead.appendChild(headerRow);
-    bidStoryTable.appendChild(thead);
+      thead.appendChild(headerRow);
+      bidStoryTable.appendChild(thead);
+    }
 
     const numToShow = 5; // Number of rows to show initially
     let currentShown = 0;
@@ -202,9 +212,16 @@ async function presentListing(listing) {
     });
 
     if (bids.length > numToShow) {
+      // Remove existing "Load More" buttons
+      bidStoryTable.parentNode
+        .querySelectorAll(".btn-load-more")
+        .forEach((btn) => {
+          btn.remove();
+        });
+
       // Create "Load More" button
       const loadMoreButton = document.createElement("button");
-      loadMoreButton.classList.add("btn", "btn-primary");
+      loadMoreButton.classList.add("btn", "btn-primary", "btn-load-more");
       loadMoreButton.style.float = "right";
       loadMoreButton.textContent = "Load More";
       loadMoreButton.addEventListener("click", () => {
@@ -239,6 +256,7 @@ async function presentListing(listing) {
       bidStoryTable.parentNode.appendChild(loadMoreButton);
     }
   } else {
+    // Handle the case where the user is not logged in
     displayMessage(
       "error-message",
       `Only registered users can see bid story on listings`,
