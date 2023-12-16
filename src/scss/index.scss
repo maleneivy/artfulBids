@@ -6,7 +6,7 @@
 
 body {
   max-width: 1700px;
-  margin: 0;
+  margin: 0 auto;
   box-sizing: border-box;
   min-height: 100vh;
   display: flex;
@@ -252,4 +252,14 @@ footer {
   border: none;
   text-decoration: underline;
   float: right;
+}
+
+// inputs
+.image-input {
+  margin-top: 10px;
+}
+
+.fa-trash-can {
+  padding-top: 20px;
+  padding-left: 5px;
 }
