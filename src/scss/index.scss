@@ -6,12 +6,16 @@
 
 body {
   max-width: 1700px;
-  margin: 0 auto;
+  margin: 0;
   box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   overflow-x: hidden;
+  flex: 1;
 }
 
 .sticky {
@@ -236,4 +240,7 @@ footer hr,
 
 #footer-logo {
   text-align: end;
+}
+footer {
+  padding: 10px;
 }
