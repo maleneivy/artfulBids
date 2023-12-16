@@ -224,3 +224,16 @@ main {
 #bidding-history-container {
   max-width: 600px;
 }
+
+// footer
+#footer-top h5,
+#footer-middle-1 a,
+#footer-middle-2 a,
+footer hr,
+.copyright-text {
+  color: $secondary;
+}
+
+#footer-logo {
+  text-align: end;
+}

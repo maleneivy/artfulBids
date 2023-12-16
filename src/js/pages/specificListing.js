@@ -3,6 +3,7 @@ import { API_BASE_URL } from "../api/baseUrl.js";
 import { createHeader } from "../components/header.js";
 import { token, userName } from "../utils/storage.mjs";
 import { displayMessage } from "../utils/displayMessage.mjs";
+import { createFooter } from "../components/footer.js";
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -19,6 +20,7 @@ if (token === null) {
 }
 
 createHeader();
+createFooter();
 
 // Present the listing in the DOM
 async function presentListing(listing) {

@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../api/baseUrl.js";
+import { createFooter } from "../components/footer.js";
 import { createHeader } from "../components/header.js";
 import logOutButton from "../components/logOutButton.mjs";
 import { formatDateTimeNorwegian } from "../utils/norwegianTimeFormat.mjs";
@@ -6,6 +7,7 @@ import { userName, email, credits, token, avatar } from "../utils/storage.mjs";
 
 createHeader();
 logOutButton();
+createFooter();
 
 async function getUserData() {
   try {

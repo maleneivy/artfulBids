@@ -21,7 +21,6 @@ async function deleteListing() {
 
   try {
     const response = await fetch(url, deleteOptions);
-    // const json = await response.json();
 
     if (response.ok) {
       window.location.href = "/html/my-profile.html";

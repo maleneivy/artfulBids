@@ -3,8 +3,10 @@ import { getAllListingsUrl } from "../api/listings/listingsUrl.js";
 import { token } from "../utils/storage.mjs";
 import { createHeader } from "../components/header.js";
 import { displayMessage, clearMessages } from "../utils/displayMessage.mjs";
+import { createFooter } from "../components/footer.js";
 
 createHeader();
+createFooter();
 
 const createListingContainer = document.querySelector("#new-listing-form");
 const listingTitle = document.querySelector("#listingTitleInput");
