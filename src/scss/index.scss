@@ -16,6 +16,7 @@ body {
 main {
   overflow-x: hidden;
   flex: 1;
+  background-color: $light;
 }
 
 .sticky {
@@ -243,4 +244,12 @@ footer hr,
 }
 footer {
   padding: 10px;
+}
+
+// buttons
+#addImageInput {
+  background-color: $light;
+  border: none;
+  text-decoration: underline;
+  float: right;
 }
