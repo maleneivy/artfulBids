@@ -41,6 +41,7 @@ export function createHeader() {
   searchInput.setAttribute("aria-label", "Search");
   const searchButton = document.createElement("button");
   searchButton.className = "btn btn-outline-success";
+  searchButton.id = "search-btn";
   searchButton.type = "submit";
   searchButton.textContent = "Search";
   searchFormMd.appendChild(searchInput);

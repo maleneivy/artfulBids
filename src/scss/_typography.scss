@@ -3,10 +3,47 @@
   font-family: century-gothic, sans-serif;
   font-style: normal;
   font-weight: 700;
+  color: $secondary;
+}
+
+.navbar-nav-header a:hover {
+  color: $tertiary;
 }
 
 .navbar-brand {
   font-family: dr-sugiyama-pro, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  font-family: rufina, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+input,
+.form-select,
+#bidButton,
+.btn-load-more,
+#edit-button,
+#create-listing-btn,
+#log-out-button,
+#save-listing-button,
+#log-in-btn,
+#register-btn,
+.form-control,
+#login-tab,
+#register-tab,
+#search-btn {
+  font-family: century-gothic, sans-serif;
   font-style: normal;
   font-weight: 400;
 }
