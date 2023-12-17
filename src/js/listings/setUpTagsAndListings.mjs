@@ -38,7 +38,6 @@ export async function setUpTagsAndListings() {
   // Add event listener that will fetch all posts with the selected tag.
   selectTagFormContainer.addEventListener("change", async (e) => {
     let tag = selectTagFormContainer.value;
-    console.log(`'${tag}'`);
     tag = tag == "show-all-listings" ? null : tag;
 
     let listings = await fetchListings(tag);

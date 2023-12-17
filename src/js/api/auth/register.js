@@ -13,8 +13,6 @@ export async function registerUser(url, userData) {
     };
     const response = await fetch(url, postData);
     const json = await response.json();
-    console.log(response);
-    console.log(json);
 
     const jsonErrors = json.errors;
 
@@ -25,11 +23,10 @@ export async function registerUser(url, userData) {
           errorMessage.message,
           ".message-register",
         );
-        console.log(errorMessage.message);
       });
     }
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }
 

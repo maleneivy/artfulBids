@@ -47,7 +47,7 @@ async function getValues() {
       });
     }
   } catch (error) {
-    console.log(error);
+    throw new Error(json.errors);
   }
 }
 
@@ -93,7 +93,6 @@ async function editListing(newTitle, newDescription, newMedia, newTags) {
 
   try {
     const response = await fetch(putUrl, putOptions);
-
     if (response.ok) {
       displayMessage(
         "success-message",
@@ -107,7 +106,7 @@ async function editListing(newTitle, newDescription, newMedia, newTags) {
       displayMessage("error-message", `Something went wrong`, ".edit-message");
     }
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }
 

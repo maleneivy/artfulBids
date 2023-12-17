@@ -28,7 +28,7 @@ export function createHeader() {
 
   const brandLink = document.createElement("a");
   brandLink.className = "navbar-brand";
-  brandLink.href = "#";
+  brandLink.href = "/html/index.html";
   brandLink.textContent = "Artful Bids";
 
   const loggedOutHeaderIcons = document.createElement("div");

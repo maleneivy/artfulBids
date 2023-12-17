@@ -49,8 +49,6 @@ export async function presentListings(listings) {
 
       // Handle error for the first image
       listingImage.onerror = function () {
-        console.log(`Error loading image: ${firstImageUrl}`);
-        // set the default image in case of error
         listingImage.src = "../../../images/default/default-post-image.jpg";
         // Remove the onerror handler to prevent the default error message
         listingImage.onerror = null;

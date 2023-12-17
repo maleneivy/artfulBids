@@ -30,7 +30,7 @@ async function getUserData() {
     const userListings = json.listings;
     createProfile(userCountListings, userListings, jsonAvatar);
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }
 getUserData();
@@ -109,7 +109,6 @@ function createProfile(userCountListings, userListings, jsonAvatar) {
 
       // Handle error for the first image
       listingImage.onerror = function () {
-        console.log(`Error loading image: ${firstImageUrl}`);
         // set the default image in case of error
         listingImage.src = "../../../images/default/default-post-image.jpg";
         // Remove the onerror handler to prevent the default error message

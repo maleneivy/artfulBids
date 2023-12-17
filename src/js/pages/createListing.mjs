@@ -89,10 +89,6 @@ async function createListing(
     const jsonErrors = json.errors;
     const listingID = json.id;
 
-    console.log(response);
-    console.log(json);
-    console.log(listingID);
-
     if (response.ok) {
       displayMessage(
         "success-message",
@@ -118,7 +114,6 @@ async function createListing(
       });
     }
   } catch (error) {
-    console.log(error);
     displayMessage("error-message", `Something went wrong`, messageContainer);
   }
 }

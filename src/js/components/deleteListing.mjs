@@ -29,7 +29,7 @@ async function deleteListing() {
       displayMessage("error-message", `Something went wrong`, ".edit-message");
     }
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }
 

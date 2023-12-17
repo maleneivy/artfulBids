@@ -18,8 +18,6 @@ async function fetchAndDisplayLatestListings() {
     const response = await fetch(latestListingsApi, fetchOptions);
     const json = await response.json();
 
-    console.log(json);
-
     if (response.ok) {
       const scrollingContainer = document.querySelector(
         "#latest-listings-container",

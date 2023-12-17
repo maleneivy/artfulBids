@@ -32,6 +32,6 @@ export async function fetchListings(tag, bids) {
     const response = await fetch(url, fetchOptions);
     return await response.json();
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }

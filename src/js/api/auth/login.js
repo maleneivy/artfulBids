@@ -21,8 +21,6 @@ export async function logInUser(url, userData) {
       const credits = json.credits;
       const avatar = json.avatar;
 
-      console.log(credits);
-
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("email", userEmail);
       localStorage.setItem("userName", userName);
@@ -38,7 +36,11 @@ export async function logInUser(url, userData) {
       );
     }
   } catch (error) {
-    console.log(error);
+    displayMessage(
+      "error-message",
+      "Username or password is wrong",
+      ".message-login",
+    );
   }
 }
 
