@@ -1,0 +1,277 @@
+@import "variables";
+@import "navbar";
+@import "typography";
+@import "subHeader";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  max-width: 1700px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  overflow-x: hidden;
+  flex: 1;
+  background-color: $light;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+.card-body {
+  max-width: 100%;
+  color: $primary;
+  background-color: $tertiary;
+}
+
+.card-title {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+}
+
+.form-control {
+  background-color: $tertiary;
+}
+
+.btn {
+  background-color: $red-100;
+  color: $primary;
+  border: solid 1px $primary;
+}
+
+.btn:hover {
+  background-color: $secondary;
+  border-color: $primary;
+}
+
+.btn:active {
+  background-color: $light;
+  border-color: $secondary;
+}
+
+.btn-log-in,
+.btn-register {
+  justify-content: end;
+  float: inline-end;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  background-color: $secondary;
+}
+
+.credits-register-info {
+  background-color: $tertiary;
+  border-radius: $border-radius;
+}
+
+.error-message,
+.success-message {
+  border-radius: $border-radius;
+  padding: 0.375rem;
+  text-align: center;
+  max-width: fit-content;
+  margin: 1rem auto;
+}
+
+.error-message {
+  background-color: $warning;
+}
+
+.success-message {
+  background-color: $green;
+}
+
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
+
+#logged-out-header-icons {
+  a {
+    .fa-user {
+      color: $secondary;
+      font-size: 1.8rem;
+
+      &:hover {
+        color: lighten($secondary, 10%);
+      }
+    }
+  }
+}
+
+#logged-in-header-icons {
+  a {
+    .fa-user {
+      color: $secondary;
+      font-size: 1.8rem;
+
+      &:hover {
+        color: lighten($secondary, 10%);
+      }
+    }
+  }
+}
+#logged-in-header-icons {
+  .fa-coins {
+    color: $secondary;
+    font-size: 1.8rem;
+
+    &:hover {
+      color: lighten($secondary, 10%);
+    }
+  }
+}
+
+// avatar
+.avatar-profile {
+  width: 150px;
+  height: 150px;
+  border: solid 1px #000;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// button
+#go-back-button {
+  margin: 1rem;
+  background-color: $light;
+  border: none;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+#go-back-button:hover {
+  background-color: $secondary;
+}
+
+// carousel
+#carouselExampleCaptions {
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  color: $primary;
+}
+
+.carousel-indicators button[data-bs-target] {
+  background-color: $primary;
+  width: 90px;
+}
+
+.carousel-indicators {
+  bottom: -40px;
+}
+
+.carousel-inner {
+  left: 25%;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: $primary;
+  padding: 10px;
+  border-radius: 9px;
+}
+
+.row-specific {
+  margin: 130px auto 30px auto;
+  max-width: 600px;
+  background-color: $tertiary;
+  padding: 10px;
+  border-radius: 0.375rem;
+  border: solid 1px $primary;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0.375rem;
+}
+
+.thumb-image {
+  height: 100px;
+  object-fit: contain;
+  border-radius: 0.375rem;
+}
+
+@media (max-width: 450px) {
+  .carousel-indicators {
+    bottom: -35px;
+  }
+}
+
+@media (max-width: 350px) {
+  .carousel-indicators {
+    bottom: 45px;
+  }
+}
+
+@media (max-width: 280px) {
+  .carousel-indicators {
+    bottom: 65px;
+  }
+}
+
+// bid
+.bid-container {
+  margin: 25px auto;
+  max-width: 200px;
+  flex-direction: column;
+}
+
+#bidAmount {
+  margin-bottom: 10px;
+}
+
+#bidding-history-container {
+  max-width: 600px;
+}
+
+// footer
+#footer-top h5,
+#footer-middle-1 a,
+#footer-middle-2 a,
+footer hr,
+.copyright-text {
+  color: $secondary;
+}
+
+#footer-logo {
+  text-align: end;
+}
+footer {
+  padding: 10px;
+}
+
+// buttons
+#addImageInput {
+  background-color: $light;
+  border: none;
+  text-decoration: underline;
+  float: right;
+}
+
+// inputs
+.image-input {
+  margin-top: 10px;
+}
+
+.fa-trash-can {
+  padding-top: 20px;
+  padding-left: 5px;
+}

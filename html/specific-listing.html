@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.typekit.net/jqs3osj.css" />
+    <script
+      src="https://kit.fontawesome.com/a1cf958ea2.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Specific Listing Page</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="sub-header">
+        <h1 class="sub-header-h1 specific-listing-h1"></h1>
+      </div>
+      <button id="go-back-button">Go back</button>
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active img-thumbnail"
+            aria-current="true"
+            aria-label="Slide 1"
+          >
+            <img
+              src="/images/default/default-post-image.jpg"
+              class="d-block w-100"
+              alt=""
+            />
+          </button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+            class="img-thumbnail"
+          >
+            <img
+              src="/images/default/default-post-image.jpg"
+              class="d-block w-100"
+              alt=""
+            />
+          </button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+            class="img-thumbnail"
+          >
+            <img
+              src="/images/default/default-post-image.jpg"
+              class="d-block w-100"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="/images/default/default-post-image.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/images/default/default-post-image.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/images/default/default-post-image.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div class="container mt-5">
+        <div class="col row-specific">
+          <div class="col mt-3 specific-listing-container"></div>
+          <div class="col mt-4">
+            <h5>Description</h5>
+            <p id="description-text"></p>
+          </div>
+          <button
+            class="btn btn-primary"
+            style="display: none"
+            id="editButton"
+            data-bs-toggle="modal"
+            data-bs-target="#editModal"
+          >
+            Edit Listing
+          </button>
+          <!--Edit Modal -->
+          <div
+            class="modal fade"
+            id="editModal"
+            tabindex="-1"
+            aria-labelledby="editModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModalLabel">Edit Listing</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="edit-listing-form">
+                    <div class="mb-3">
+                      <label for="editTitleInput" class="form-label"
+                        >Title</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editTitleInput"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="editDescriptionInput" class="form-label"
+                        >Description</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="editDescriptionInput"
+                        rows="7"
+                      ></textarea>
+                    </div>
+                    <div class="mb-3">
+                      <div id="editImageInputsContainer"></div>
+                      <div class="empty-image-message"></div>
+                      <button type="button" id="addImageInput" class="mt-2">
+                        Add Image
+                      </button>
+                    </div>
+                    <div class="mb-3">
+                      <label for="editTagsInput" class="form-label"
+                        >Category</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="editTagsInput"
+                      />
+                    </div>
+                    <div class="modal-footer">
+                      <div class="edit-message"></div>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        id="closeModalButton"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="submit"
+                        id="save-listing-button"
+                        class="btn btn-primary"
+                      >
+                        Save changes
+                      </button>
+                      <button
+                        type="submit"
+                        id="delete-listing-button"
+                        class="btn"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bid-container d-flex">
+        <input
+          type="number"
+          id="bidAmount"
+          class="form-control"
+          placeholder="Place your bid here"
+        />
+        <button class="btn btn-primary" id="bidButton" onclick="placeBid()">
+          Bid
+        </button>
+        <button
+          class="btn btn-primary"
+          style="display: none"
+          id="logInButton"
+          onclick="location.href=`/html/log-in-register.html`"
+        >
+          Log in to place a bid
+        </button>
+      </div>
+      <div class="bidding-message"></div>
+
+      <div class="container mt-5" id="bidding-history-container">
+        <table class="table" id="bidding-table">
+          <h5>Bid history</h5>
+          <div class="unregistered-message"></div>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+    <footer class="mt-5 bg-primary">
+      <div class="container pt-3">
+        <div class="row">
+          <div class="col" id="footer-top"></div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row" id="footer-middle-1"></div>
+        <div class="row" id="footer-middle-2"></div>
+        <div class="col" id="footer-logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50.921"
+            height="60.803"
+            viewBox="0 0 50.921 60.803"
+          >
+            <g
+              id="Logo_-_mobile"
+              data-name="Logo - mobile"
+              transform="translate(2.5 2.5)"
+            >
+              <g id="Logo_Desktop" data-name="Logo Desktop">
+                <g
+                  id="Rectangle_33"
+                  data-name="Rectangle 33"
+                  transform="translate(0 0.048)"
+                  fill="#436479"
+                  stroke="#bff0e8"
+                  stroke-width="5"
+                >
+                  <rect width="46" height="56" stroke="none" />
+                  <rect x="2.5" y="2.5" width="41" height="51" fill="none" />
+                </g>
+                <path
+                  id="Rectangle_33_-_Outline"
+                  data-name="Rectangle 33 - Outline"
+                  d="M1.453,1.453v52.9H44.468V1.453H1.453M0,0H45.921V55.8H0Z"
+                  fill="#436479"
+                  stroke="#bff0e8"
+                  stroke-width="5"
+                />
+                <path
+                  id="Line_7"
+                  data-name="Line 7"
+                  d="M27.743,53.719-1.321-.3l.768-.413L28.511,53.306Z"
+                  transform="translate(1.664 1.274)"
+                  fill="#436479"
+                  stroke="#bff0e8"
+                  stroke-width="3"
+                />
+                <path
+                  id="Line_8"
+                  data-name="Line 8"
+                  d="M15.985-.628H0V-1.5H15.985Z"
+                  transform="translate(0.727 31.727)"
+                  fill="#436479"
+                  stroke="#bff0e8"
+                  stroke-width="3"
+                />
+                <path
+                  id="Path_11"
+                  data-name="Path 11"
+                  d="M8.141,13.895l-.422-.763A22.36,22.36,0,0,0,10.66,11.1a14.3,14.3,0,0,0,2.148-2.128,6.008,6.008,0,0,0,1.257-2.446,3.245,3.245,0,0,0,0-1.382,3.626,3.626,0,0,0-.691-1.409,9,9,0,0,0-3.543-2.6A19.543,19.543,0,0,0,5.377-.17,29.969,29.969,0,0,0-.016-.635l-.022-.872a30.336,30.336,0,0,1,5.57.479A20.408,20.408,0,0,1,10.182.339,9.854,9.854,0,0,1,14.061,3.2a4.149,4.149,0,0,1,.858,3.5,6.865,6.865,0,0,1-1.433,2.817A15.2,15.2,0,0,1,11.2,11.786,22.808,22.808,0,0,1,8.141,13.895Z"
+                  transform="translate(0.754 1.797)"
+                  fill="#436479"
+                  stroke="#bff0e8"
+                  stroke-width="3"
+                />
+                <path
+                  id="Path_12"
+                  data-name="Path 12"
+                  d="M20.942,39.037l-.761-.425c.005-.01.548-.986,1.252-2.571a44.989,44.989,0,0,0,2.279-6.377,28.753,28.753,0,0,0,1.1-8.159,17.7,17.7,0,0,0-.567-4.11,13.537,13.537,0,0,0-1.657-3.8A24.19,24.19,0,0,0,16.407,7.3,46.255,46.255,0,0,0,8.8,2.859,61.425,61.425,0,0,0-.386-.607l.224-.843c.044.012,1.091.292,2.769.867A65.576,65.576,0,0,1,9.155,2.063a47.156,47.156,0,0,1,7.76,4.524,25.056,25.056,0,0,1,6.406,6.533,16.053,16.053,0,0,1,2.362,8.372,29.647,29.647,0,0,1-1.133,8.417,45.513,45.513,0,0,1-2.326,6.5C21.505,38.027,20.965,39,20.942,39.037Z"
+                  transform="translate(9.138 16.287)"
+                  fill="#436479"
+                  stroke="#bff0e8"
+                  stroke-width="3"
+                />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="container">
+        <div class="col" id="footer-bottom"></div>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/js/pages/specificListing.js"></script>
+    <script type="module" src="/src/js/components/goBackButton.js"></script>
+    <script type="module" src="/src/js/components/bidOnListing.js"></script>
+    <script type="module" src="/src/js/components/editListing.mjs"></script>
+    <script type="module" src="/src/js/components/deleteListing.mjs"></script>
+  </body>
+</html>
