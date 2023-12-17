@@ -8,6 +8,11 @@ const urlParams = new URLSearchParams(queryString);
 const listingId = urlParams.get("id");
 const editFormContainer = document.querySelector("#edit-listing-form");
 const saveButton = document.querySelector("#save-listing-button");
+const imageInputContainer = document.querySelector("#editImageInputsContainer");
+const addImageInputButton = document.querySelector("#addImageInput");
+
+// Image Input Limit
+const maxNumberOfImages = 5;
 
 // Get values
 async function getValues() {
@@ -27,25 +32,122 @@ async function getValues() {
 
     const title = document.querySelector("#editTitleInput");
     const description = document.querySelector("#editDescriptionInput");
-    const media = document.querySelector("#editAddImageInput");
     const tags = document.querySelector("#editTagsInput");
 
     title.value = json.title;
     description.value = json.description;
-    media.value = json.media;
     tags.value = json.tags;
-  } catch (error) {}
+
+    if (json.media.length === 0) {
+      createAndInsertImageField("", imageInputContainer);
+    } else {
+      json.media.forEach((image) =>
+        createAndInsertImageField(image, imageInputContainer),
+      );
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 getValues();
+
+addImageInputButton.addEventListener("click", () => {
+  // Clear any existing error messages
+  clearMessages(".empty-image-message");
+
+  if (!canInsertNewImage()) {
+    displayMessage(
+      "error-message",
+      `You can have max ${maxNumberOfImages} images.`,
+      ".empty-image-message",
+    );
+    return;
+  }
+
+  // Check if number of images is within range.
+  const imageInputs = document.querySelectorAll(".image-input.form-control");
+
+  // Check if the last image input is empty or if it's not a valid URL
+  if (imageInputs.length !== 0) {
+    const lastImageValue = imageInputs[imageInputs.length - 1].value.trim();
+
+    if (lastImageValue === "" || !isValidURL(lastImageValue)) {
+      // Alert a message if the last input is empty or not a valid URL
+      displayMessage(
+        "error-message",
+        `Please fill in a valid URL in the current image input before adding a new one`,
+        ".empty-image-message",
+      );
+      return;
+    }
+  }
+
+  createAndInsertImageField("", imageInputContainer);
+});
+
+// Function to check if a string is a valid URL
+function isValidURL(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function canInsertNewImage() {
+  // Check if number of images is within range.
+  const imageInputs = document.querySelectorAll(".image-input.form-control");
+  return imageInputs.length < maxNumberOfImages;
+}
+
+function createAndInsertImageField(image, container) {
+  // Create a new row for image input
+  const newRow = document.createElement("div");
+  newRow.className = "image-input-row";
+
+  const flexImgContainer = document.createElement("div");
+  flexImgContainer.className = "d-flex";
+
+  // Create input for image URL
+  const newImageInput = document.createElement("input");
+  newImageInput.type = "url";
+  newImageInput.className = "image-input form-control";
+  newImageInput.value = image;
+
+  // Create delete button for the new image input
+  const deleteImageUrlButton = document.createElement("i");
+  deleteImageUrlButton.className = "fa-regular fa-trash-can";
+  deleteImageUrlButton.id = "delete-image-input";
+  deleteImageUrlButton.style.color = "#272c35";
+  deleteImageUrlButton.addEventListener("click", () => {
+    newRow.remove();
+    if (canInsertNewImage()) {
+      clearMessages(".empty-image-message");
+    }
+  });
+
+  // Append the elements to the new row
+  newRow.appendChild(flexImgContainer);
+  flexImgContainer.appendChild(newImageInput);
+  flexImgContainer.appendChild(deleteImageUrlButton);
+
+  // Append the new row to the container
+  container.appendChild(newRow);
+}
 
 // Edit values
 editFormContainer.addEventListener("submit", (e) => {
   e.preventDefault();
   const newTitle = editTitleInput.value;
   const newDescription = editDescriptionInput.value;
-  const newMedia = editAddImageInput.value;
   const newTags = editTagsInput.value;
+
+  // Get an array of image URLs
+  const newMedia = Array.from(document.querySelectorAll(".image-input")).map(
+    (input) => input.value,
+  );
 
   editListing(newTitle, newDescription, newMedia, newTags);
 });
@@ -57,7 +159,7 @@ async function editListing(newTitle, newDescription, newMedia, newTags) {
     title: newTitle,
     description: newDescription,
     tags: [newTags],
-    media: [newMedia],
+    media: newMedia,
   });
 
   const putOptions = {
