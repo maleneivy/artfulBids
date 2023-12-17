@@ -27,7 +27,7 @@ export async function logInUser(url, userData) {
       localStorage.setItem("credits", credits);
       localStorage.setItem("avatar", avatar);
 
-      window.location.href = "/html/index.html";
+      window.location.href = "/index.html";
     } else {
       displayMessage(
         "error-message",

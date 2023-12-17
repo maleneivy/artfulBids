@@ -28,13 +28,13 @@ export function createHeader() {
 
   const brandLink = document.createElement("a");
   brandLink.className = "navbar-brand";
-  brandLink.href = "/html/index.html";
+  brandLink.href = "/index.html";
   brandLink.textContent = "Artful Bids";
 
   const loggedOutHeaderIcons = document.createElement("div");
   loggedOutHeaderIcons.id = "logged-out-header-icons";
   const userLinkLoggedOut = document.createElement("a");
-  userLinkLoggedOut.href = "../html/log-in-register.html";
+  userLinkLoggedOut.href = "../pages/log-in-register.html";
   const userIconLoggedOut = document.createElement("i");
   userIconLoggedOut.className = "fa-solid fa-user";
   userLinkLoggedOut.appendChild(userIconLoggedOut);
@@ -52,7 +52,7 @@ export function createHeader() {
   creditsDisplay.classList.add("ms-1", "me-3", "mb-0");
   creditsDisplay.style.lineHeight = "1.5";
   const userLinkLoggedIn = document.createElement("a");
-  userLinkLoggedIn.href = "/html/my-profile.html";
+  userLinkLoggedIn.href = "/pages/my-profile.html";
   const userIconLoggedIn = document.createElement("i");
   userIconLoggedIn.className = "fa-solid fa-user";
   loggedInHeaderIcons.appendChild(creditInfo);
@@ -70,15 +70,15 @@ export function createHeader() {
   const homeLink = document.createElement("a");
   homeLink.className = "nav-link mt-2 mb-1";
   homeLink.setAttribute("aria-current", "page");
-  homeLink.href = "/html/index.html";
+  homeLink.href = "/index.html";
   homeLink.textContent = "Home";
   const aboutLink = document.createElement("a");
   aboutLink.className = "nav-link my-1";
-  aboutLink.href = "/html/about.html";
+  aboutLink.href = "/pages/about.html";
   aboutLink.textContent = "About";
   const contactLink = document.createElement("a");
   contactLink.className = "nav-link my-1";
-  contactLink.href = "/html/contact.html";
+  contactLink.href = "/pages/contact.html";
   contactLink.textContent = "Contact";
 
   navbarNav.appendChild(homeLink);

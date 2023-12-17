@@ -3,7 +3,7 @@ export function createFooter() {
 
   const brandLink = document.createElement("a");
   brandLink.className = "navbar-brand";
-  brandLink.href = "#";
+  brandLink.href = "/index.html";
   brandLink.textContent = "Artful Bids";
 
   const brandSlogan = document.createElement("h5");
@@ -20,11 +20,11 @@ export function createFooter() {
   footerMiddle2.classList.add("mt-3");
 
   const aboutLink = document.createElement("a");
-  aboutLink.href = "/html/about.html";
+  aboutLink.href = "/pages/about.html";
   aboutLink.textContent = "About";
 
   const contactLink = document.createElement("a");
-  contactLink.href = "/html/contact.html";
+  contactLink.href = "/pages/contact.html";
   contactLink.textContent = "Contact";
 
   footerMiddle1.appendChild(aboutLink);

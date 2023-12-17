@@ -99,7 +99,7 @@ async function createListing(
       createListingContainer.reset();
       saveButton.style.display = "none";
       let listingLink = document.createElement("a");
-      listingLink.href = `/html/specific-listing.html?id=${listingID}`;
+      listingLink.href = `/pages/specific-listing.html?id=${listingID}`;
       listingLink.textContent = "Go to listing";
       goToSpecificListing.appendChild(listingLink);
     } else if (jsonErrors) {

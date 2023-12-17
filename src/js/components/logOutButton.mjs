@@ -6,7 +6,7 @@ export default function logOutButton() {
   if (button) {
     button.onclick = function () {
       clearStorage();
-      location.href = "../../../html/index.html";
+      location.href = "../../../index.html";
     };
   }
 }

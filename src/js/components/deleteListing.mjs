@@ -23,7 +23,7 @@ async function deleteListing() {
     const response = await fetch(url, deleteOptions);
 
     if (response.ok) {
-      window.location.href = "/html/my-profile.html";
+      window.location.href = "/pages/my-profile.html";
       alert(`Your listing was successfully deleted`);
     } else {
       displayMessage("error-message", `Something went wrong`, ".edit-message");

@@ -17,7 +17,7 @@ export async function presentListings(listings) {
 
     //ListingCard (Card will link href to the specific listing)
     const listingCard = document.createElement("a");
-    listingCard.href = `/html/specific-listing.html?id=${id}`;
+    listingCard.href = `/pages/specific-listing.html?id=${id}`;
     listingCard.classList.add(
       "card",
       "col-sm-12",
