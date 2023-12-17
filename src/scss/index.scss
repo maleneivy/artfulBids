@@ -134,13 +134,26 @@ a {
   }
 }
 
-// img
+// avatar
 .avatar-profile {
   width: 150px;
   height: 150px;
   border: solid 1px #000;
   border-radius: 50%;
   object-fit: cover;
+}
+
+// button
+#go-back-button {
+  margin: 1rem;
+  background-color: $light;
+  border: none;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+#go-back-button:hover {
+  background-color: $secondary;
 }
 
 // carousel
