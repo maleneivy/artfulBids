@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "An auction website",
   "type": "module",
-  "main": "src/index.js",
+  "main": "src/js/pages/main.js",
   "scripts": {
     "test": "npm test",
     "lint": "eslint src/**/*.js",
