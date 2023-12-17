@@ -16,7 +16,7 @@ async function searchFilter(searchValue) {
   });
 }
 
-const searchInput = document.querySelector("#search-listings");
+const searchInput = document.querySelector(".search-listings");
 
 searchInput.addEventListener("input", function () {
   const searchValue = this.value.trim().toLowerCase();

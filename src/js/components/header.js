@@ -31,22 +31,6 @@ export function createHeader() {
   brandLink.href = "#";
   brandLink.textContent = "Artful Bids";
 
-  const searchFormMd = document.createElement("form");
-  searchFormMd.className = "d-none d-md-flex";
-  searchFormMd.role = "search";
-  const searchInput = document.createElement("input");
-  searchInput.className = "form-control me-2";
-  searchInput.type = "search";
-  searchInput.placeholder = "Search";
-  searchInput.setAttribute("aria-label", "Search");
-  const searchButton = document.createElement("button");
-  searchButton.className = "btn btn-outline-success";
-  searchButton.id = "search-btn";
-  searchButton.type = "submit";
-  searchButton.textContent = "Search";
-  searchFormMd.appendChild(searchInput);
-  searchFormMd.appendChild(searchButton);
-
   const loggedOutHeaderIcons = document.createElement("div");
   loggedOutHeaderIcons.id = "logged-out-header-icons";
   const userLinkLoggedOut = document.createElement("a");
@@ -96,30 +80,14 @@ export function createHeader() {
   contactLink.className = "nav-link my-1";
   contactLink.href = "/html/contact.html";
   contactLink.textContent = "Contact";
-  const searchFormSm = document.createElement("form");
-  searchFormSm.className = "d-flex d-md-none";
-  searchFormSm.role = "search";
-  const searchInputSm = document.createElement("input");
-  searchInputSm.className = "form-control me-2";
-  searchInputSm.type = "search";
-  searchInputSm.placeholder = "Search";
-  searchInputSm.setAttribute("aria-label", "Search");
-  const searchButtonSm = document.createElement("button");
-  searchButtonSm.className = "btn btn-outline-success";
-  searchButtonSm.type = "submit";
-  searchButtonSm.textContent = "Search";
-  searchFormSm.appendChild(searchInputSm);
-  searchFormSm.appendChild(searchButtonSm);
 
   navbarNav.appendChild(homeLink);
   navbarNav.appendChild(aboutLink);
 
   navbarNav.appendChild(contactLink);
-  navbarNav.appendChild(searchFormSm);
 
   container.appendChild(toggleButton);
   container.appendChild(brandLink);
-  container.appendChild(searchFormMd);
   container.appendChild(loggedOutHeaderIcons);
   container.appendChild(loggedInHeaderIcons);
   container.appendChild(navbarCollapse);
