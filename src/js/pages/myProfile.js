@@ -134,7 +134,8 @@ function createProfile(userCountListings, userListings, jsonAvatar) {
     // Ending time for listing
     let listingEndsAt = document.createElement("p");
     listingEndsAt.classList.add("card-text", "p-2");
-    listingEndsAt.textContent = endsAt;
+    listingEndsAt.textContent = `Ends at:
+    ${endsAt}`;
     listingEndsAt.style.whiteSpace = "pre-line";
 
     // Append the elements to the cardBody

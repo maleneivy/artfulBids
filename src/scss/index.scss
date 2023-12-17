@@ -26,19 +26,18 @@ main {
   z-index: 3;
 }
 
-.scrolling-container {
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.overflow-card {
-  display: inline-block;
-  margin-right: 10px;
-  width: 300px;
-}
-
 .card-body {
   max-width: 100%;
+  color: $primary;
+  background-color: $tertiary;
+}
+
+.card-title {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
 }
 
 .form-control {
