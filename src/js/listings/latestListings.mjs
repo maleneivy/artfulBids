@@ -30,8 +30,7 @@ async function fetchAndDisplayLatestListings() {
       );
 
       // Iterate through the latest listings and create card elements
-      json.slice(0, 5).forEach((listing) => {
-        const created = formatDateTimeNorwegian(listing.created);
+      sortedListings.slice(0, 5).forEach((listing) => {
         const title = listing.title;
         let media = listing.media;
         media = media.toString();
