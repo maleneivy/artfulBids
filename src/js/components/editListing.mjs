@@ -2,10 +2,8 @@ import { API_BASE_URL } from "../api/baseUrl.js";
 import { getSpecificListing } from "../pages/specificListing.js";
 import { clearMessages, displayMessage } from "../utils/displayMessage.mjs";
 import {
-  createAndInsertImageField,
-  isValidURL,
-  canInsertNewImage,
-  maxNumberOfImages,
+  createAndAppendImageInput,
+  insertNewImageInputIfPossible,
 } from "../utils/imageInputs.js";
 import { token } from "../utils/storage.mjs";
 
@@ -42,10 +40,10 @@ async function getValues() {
     tags.value = json.tags;
 
     if (json.media.length === 0) {
-      createAndInsertImageField("", imageInputContainer);
+      createAndAppendImageInput("", imageInputContainer);
     } else {
       json.media.forEach((image) => {
-        createAndInsertImageField(image, imageInputContainer);
+        createAndAppendImageInput(image, imageInputContainer);
       });
     }
   } catch (error) {
@@ -56,37 +54,7 @@ async function getValues() {
 getValues();
 
 addImageInputButton.addEventListener("click", () => {
-  // Clear any existing error messages
-  clearMessages(".empty-image-message");
-
-  if (!canInsertNewImage()) {
-    displayMessage(
-      "error-message",
-      `You can have max ${maxNumberOfImages} images.`,
-      ".empty-image-message",
-    );
-    return;
-  }
-
-  // Check if number of images is within range.
-  const imageInputs = document.querySelectorAll(".image-input.form-control");
-
-  // Check if the last image input is empty or if it's not a valid URL
-  if (imageInputs.length !== 0) {
-    const lastImageValue = imageInputs[imageInputs.length - 1].value.trim();
-
-    if (lastImageValue === "" || !isValidURL(lastImageValue)) {
-      // Alert a message if the last input is empty or not a valid URL
-      displayMessage(
-        "error-message",
-        `Please fill in a valid URL in the current image input before adding a new one`,
-        ".empty-image-message",
-      );
-      return;
-    }
-  }
-
-  createAndInsertImageField("", imageInputContainer);
+  insertNewImageInputIfPossible(imageInputContainer);
 });
 
 // Edit values

@@ -1,4 +1,4 @@
-import { clearMessages } from "./displayMessage.mjs";
+import { clearMessages, displayMessage } from "./displayMessage.mjs";
 
 // Function to check if a string is a valid URL
 export function isValidURL(url) {
@@ -18,7 +18,41 @@ export function canInsertNewImage() {
   return imageInputs.length < maxNumberOfImages;
 }
 
-export function createAndInsertImageField(image, container) {
+export function insertNewImageInputIfPossible(container) {
+  // Clear any existing error messages
+  clearMessages(".empty-image-message");
+
+  if (!canInsertNewImage()) {
+    displayMessage(
+      "error-message",
+      `You can have max ${maxNumberOfImages} images.`,
+      ".empty-image-message",
+    );
+    return;
+  }
+
+  // Check if number of images is within range.
+  const imageInputs = document.querySelectorAll(".image-input.form-control");
+
+  // Check if the last image input is empty or if it's not a valid URL
+  if (imageInputs.length !== 0) {
+    const lastImageValue = imageInputs[imageInputs.length - 1].value.trim();
+
+    if (lastImageValue === "" || !isValidURL(lastImageValue)) {
+      // Alert a message if the last input is empty or not a valid URL
+      displayMessage(
+        "error-message",
+        `Please fill in a valid URL in the current image input before adding a new one`,
+        ".empty-image-message",
+      );
+      return;
+    }
+  }
+
+  createAndAppendImageInput("", container);
+}
+
+export function createAndAppendImageInput(imageUrl, container) {
   // Create a new row for image input
   const newRow = document.createElement("div");
   newRow.className = "image-input-row";
@@ -30,7 +64,7 @@ export function createAndInsertImageField(image, container) {
   const newImageInput = document.createElement("input");
   newImageInput.type = "url";
   newImageInput.className = "image-input form-control";
-  newImageInput.value = image;
+  newImageInput.value = imageUrl;
 
   // Create delete button for the new image input
   const deleteImageUrlButton = document.createElement("i");

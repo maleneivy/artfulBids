@@ -4,6 +4,7 @@ import { token } from "../utils/storage.mjs";
 import { createHeader } from "../components/header.js";
 import { displayMessage, clearMessages } from "../utils/displayMessage.mjs";
 import { createFooter } from "../components/footer.js";
+import { insertNewImageInputIfPossible } from "../utils/imageInputs.js";
 
 createHeader();
 createFooter();
@@ -22,73 +23,9 @@ const saveButton = document.querySelector("#save-listing-button");
 const imageInputContainer = document.querySelector("#ImageInputsContainer");
 const addImageInputButton = document.querySelector("#addImageInput");
 
-// Image Input Limit
-const max_image_inputs = 5;
-
-let imageCounter = 1;
-
 addImageInputButton.addEventListener("click", () => {
-  // Clear any existing error messages
-  clearMessages(".empty-image-message");
-
-  // Check if the last image input is empty or if it's not a valid URL
-  const lastImageInput = document.querySelector(`#listingImage${imageCounter}`);
-  if (lastImageInput) {
-    const lastImageValue = lastImageInput.value.trim();
-    if (lastImageValue === "" || !isValidURL(lastImageValue)) {
-      // Alert a message if the last input is empty or not a valid URL
-      displayMessage(
-        "error-message",
-        `Please fill in a valid URL in the current image input before adding a new one`,
-        ".empty-image-message",
-      );
-      return;
-    }
-  }
-
-  // Create a new row for image input
-  const newRow = document.createElement("div");
-  newRow.className = "image-input-row";
-  newRow.id = `image-input-row-${imageCounter + 1}`;
-
-  const flexImgContainer = document.createElement("div");
-  flexImgContainer.className = "d-flex";
-
-  // Create input for image URL
-  const newImageInput = document.createElement("input");
-  newImageInput.type = "url";
-  newImageInput.className = "image-input form-control";
-  newImageInput.id = `listingImage${imageCounter + 1}`;
-
-  // Create delete button for the new image input
-  const deleteImageUrlButton = document.createElement("i");
-  deleteImageUrlButton.className = "fa-regular fa-trash-can";
-  deleteImageUrlButton.id = "delete-image-input";
-  deleteImageUrlButton.style.color = "#272c35";
-  deleteImageUrlButton.addEventListener("click", () => {
-    newRow.remove();
-  });
-
-  // Append the elements to the new row
-  newRow.appendChild(flexImgContainer);
-  flexImgContainer.appendChild(newImageInput);
-  flexImgContainer.appendChild(deleteImageUrlButton);
-
-  // Append the new row to the container
-  imageInputContainer.appendChild(newRow);
-
-  imageCounter++;
+  insertNewImageInputIfPossible(imageInputContainer);
 });
-
-// Function to check if a string is a valid URL
-function isValidURL(url) {
-  try {
-    new URL(url);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
 
 createListingContainer.addEventListener("submit", (e) => {
   e.preventDefault();
