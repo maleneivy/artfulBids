@@ -24,7 +24,6 @@ createFooter();
 
 // Present the listing in the DOM
 async function presentListing(listing) {
-  //   const created = listing.created;
   const title = listing.title;
   const description = listing.description;
   const media = listing.media;
@@ -32,12 +31,10 @@ async function presentListing(listing) {
   const bids = listing.bids;
   const endsAt = new Date(listing.endsAt).getTime();
 
-  // h1 lisitng name
   const presentH1Title = document.querySelector(".specific-listing-h1");
   presentH1Title.textContent = title[0].toUpperCase() + title.slice(1);
 
   // Check if user is the creator of the listing
-  // Show/hide elements
   const seller = listing.seller.name;
   if (seller === userName) {
     bidButton.style.display = "none";
@@ -53,7 +50,6 @@ async function presentListing(listing) {
     const carouselIndicators = document.querySelector(".carousel-indicators");
     const carouselInner = document.querySelector(".carousel-inner");
 
-    // Clear existing indicators and inner content
     carouselIndicators.innerHTML = "";
     carouselInner.innerHTML = "";
 
@@ -109,7 +105,6 @@ async function presentListing(listing) {
   const presentHighestBid = document.createElement("p");
   presentHighestBid.classList.add("highest-bid-amount");
   if (bids.length > 0) {
-    // Find the highest bid amount
     const highestBidAmount = bids.reduce((maxBid, currentBid) => {
       return currentBid.amount > (maxBid ? maxBid.amount : 0)
         ? currentBid
@@ -122,7 +117,7 @@ async function presentListing(listing) {
   }
 
   const timeLeftContainer = document.createElement("div");
-  let intervalId; // Declare intervalId here
+  let intervalId;
 
   // Function to update time left
   function updateTimeLeft() {
@@ -137,15 +132,17 @@ async function presentListing(listing) {
       timeLeftContainer.textContent = `Time Left: ${hours}h ${minutes}m ${seconds}s`;
     } else {
       timeLeftContainer.textContent = "Auction has ended.";
-      clearInterval(intervalId); // Stop updating once time is up
+      timeLeftContainer.style.backgroundColor = `#d86f61`;
+      timeLeftContainer.style.padding = `10px`;
+      clearInterval(intervalId);
+      bidButton.disabled = true;
+      let bidAmount = document.querySelector("#bidAmount");
+      bidAmount.style.display = "none";
     }
   }
 
-  // Initial call to set up the display
   updateTimeLeft();
-
-  // Update time left every second
-  intervalId = setInterval(updateTimeLeft, 1000); // Assign to intervalId here
+  intervalId = setInterval(updateTimeLeft, 1000);
 
   // Present seller on listing
   const presentSeller = document.createElement("p");
@@ -166,7 +163,6 @@ async function presentListing(listing) {
     const bidStoryTable = document.querySelector("#bidding-table");
     const tbody = bidStoryTable.querySelector("tbody");
 
-    // Clear existing content inside tbody
     tbody.innerHTML = "";
 
     // Sort bids by amount in descending order
@@ -189,17 +185,14 @@ async function presentListing(listing) {
       bidStoryTable.appendChild(thead);
     }
 
-    const numToShow = 5; // Number of rows to show initially
+    const numToShow = 5;
     let currentShown = 0;
 
     bids.slice(0, numToShow).forEach((bid) => {
       let bidderName = bid.bidderName;
       let bidAmount = bid.amount;
 
-      // Create a new row for each bid
       const row = document.createElement("tr");
-
-      // Add columns to the row
       const amountCell = document.createElement("td");
       amountCell.textContent = bidAmount;
       row.appendChild(amountCell);
@@ -208,20 +201,17 @@ async function presentListing(listing) {
       bidderNameCell.textContent = bidderName;
       row.appendChild(bidderNameCell);
 
-      // Append the row to the table body
       tbody.appendChild(row);
       currentShown++;
     });
 
     if (bids.length > numToShow) {
-      // Remove existing "Load More" buttons
       bidStoryTable.parentNode
         .querySelectorAll(".btn-load-more")
         .forEach((btn) => {
           btn.remove();
         });
 
-      // Create "Load More" button
       const loadMoreButton = document.createElement("button");
       loadMoreButton.classList.add("btn", "btn-primary", "btn-load-more");
       loadMoreButton.style.float = "right";
@@ -231,10 +221,8 @@ async function presentListing(listing) {
           let bidderName = bid.bidderName;
           let bidAmount = bid.amount;
 
-          // Create a new row for each bid
           const row = document.createElement("tr");
 
-          // Add columns to the row
           const amountCell = document.createElement("td");
           amountCell.textContent = bidAmount;
           row.appendChild(amountCell);
@@ -243,22 +231,18 @@ async function presentListing(listing) {
           bidderNameCell.textContent = bidderName;
           row.appendChild(bidderNameCell);
 
-          // Append the row to the table body
           tbody.appendChild(row);
           currentShown++;
         });
 
         if (currentShown >= bids.length) {
-          // Hide the "Load More" button when all bids are shown
           loadMoreButton.style.display = "none";
         }
       });
 
-      // Append the "Load More" button to the container
       bidStoryTable.parentNode.appendChild(loadMoreButton);
     }
   } else {
-    // Handle the case where the user is not logged in
     displayMessage(
       "error-message",
       `Only registered users can see bid story on listings`,
