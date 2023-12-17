@@ -9,7 +9,7 @@
     "lint": "eslint src/**/*.js",
     "format": "prettier -w src/**/*.js",
     "lint-fix": "eslint src/**/*.js --cache --fix",
-    "prepare": "husky install",
+    "prepare": "husky install ",
     "build": "sass src/scss:css/",
     "watch": "sass --watch src/scss:css/"
   },
