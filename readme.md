@@ -2,8 +2,14 @@
 
 ### Semester Project 2 - Noroff Education
 
-This is a semester project I had at Noroff. The assignment was to launch a website where users can add items to be bid and bid on other users listings.
-When a new user joins the auction site, they are given 1000 creditrs to use on the site. Credits are earned by selling items and used for buying.
+This is a semester project I had at Noroff. The assignment was to launch a website where users can add items to be bid on and add bids on other users listings.
+When a new user joins the auction site, they are given 1000 credits to use on the site. Credits are earned by selling items and used for buying.
+
+### Repo is deployed on Netlify
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f62a0b0-4890-4f93-9429-056680a6ccae/deploy-status)](https://app.netlify.com/sites/artful-bids-sm2/deploys)
+
+[Netlify](https://artful-bids-sm2.netlify.app/).
 
 ### Install
 
